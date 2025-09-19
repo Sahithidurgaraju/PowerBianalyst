@@ -7,7 +7,7 @@ This repository highlights my work as a **Power BI Analyst**, where I’ve built
 * **Healthcare Dashboard** – Analyzed $3.36M hospital billing data to track treatment, medication, insurance, and departmental costs. Delivered insights on high-revenue procedures and inpatient dominance.
 * **HR Dashboard** – Workforce analytics on 1,470 employees covering promotions, attrition risk, gender distribution, job levels, and job satisfaction.
 * **Sales Analysis Dashboard** – Sales and profit trends across regions and categories, including KPIs for revenue growth and top-performing products.
-* *(Add more projects as you build them)*
+
 
 #### 🔹 Key Features
 
