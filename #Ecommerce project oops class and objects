@@ -1,0 +1,54 @@
+#Ecommerce project oops class and objects
+
+class Product():
+    def __init__(self, product_id, name, price, stock):
+        self.product_id = product_id
+        self.name = name
+        self.price = price
+        self.stock = stock
+    def update_stock(self, quantity):
+        if self.stock < quantity:
+            return("not enough stock")
+        self.stock -= quantity
+        return self.stock
+class Cart():
+    def __init__(self):
+        self.items = []
+    def add_to_cart(self, product, quantity):
+        for item in self.items:
+            if item[0].product_id == product.product_id:
+                item[1] +=quantity
+                print("items added:", self.items)
+        self.items.append([product,quantity])
+        print("new item added")
+    def get_info(self):
+        for product, quantity in self.items:
+            print(product.product_id, product.name, quantity)
+    def view_cart(self):
+        subtotal = 1
+        for product, quantity in self.items:
+            subtotal = product.price * quantity
+            print(f"\nname: {product.name}\nquantity: {quantity}\nprice per item: {product.price}\nsubtotal: {subtotal}\n")
+    def calculate_total(self):
+        total = 0
+        for product, quantity in self.items:
+            subtotal = product.price * quantity
+            total = total + subtotal
+        return total
+
+   
+            
+        
+product1 = Product(101, "mobile", 10000, 10)
+product2 = Product(102, "laptop", 10000, 10)
+product1.update_stock(1)   
+print(product1.stock) 
+cart = Cart()
+cart.add_to_cart(product1, 2)
+cart.add_to_cart(product2, 2)
+cart.get_info()
+cart.view_cart()
+print(cart.calculate_total())
+          
+      
+
