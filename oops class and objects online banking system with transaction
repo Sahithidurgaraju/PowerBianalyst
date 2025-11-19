@@ -1,0 +1,80 @@
+#online banking system:
+#oops class and objects
+
+class Account():
+    def __init__(self, account_number, holder_name, balance):
+        self.account_number = account_number
+        self.holder_name = holder_name
+        self.balance = balance
+    def deposit(self, amount):
+        if amount < 0:
+            return "insufficient money"
+        self.balance += amount
+        return self.balance
+    def withdraw(self, amount):
+        if amount <0:
+            return "insufficient funds"
+        self.balance -= amount
+        return self.balance
+    def get_balance(self):
+        return self.balance
+class Bank():
+    def __init__(self, bank_name):
+        self.bank_name = bank_name
+        self.accounts = []
+    def create_account(self, account_number):
+            self.accounts.append(account_number)
+            return "account added"
+    def close_account(self, account):
+        for accnum in self.accounts:
+            if accnum.account_number == account_number:
+                self.accounts.remove(account)
+                print("account closed")
+        print("not found")
+    def find_account(self, account_number):
+        for accunum in self.accounts:
+            if accunum.account_number == account_number:
+                print(account_number)
+                return accunum
+        print("not able to find the account")
+    def total_balance(self):
+        total = 0
+        for accunum in self.accounts:
+            total = total + accunum.balance
+        return total
+    def display_accounts(self):
+        for accunum in self.accounts:
+            print(accunum.holder_name)
+class Transaction():
+    def __init__(self, account_number, transaction_type, amount):
+        self.account_number = account_number
+        self.transaction_type = transaction_type
+        self.amount = amount
+    def process(self, bank):
+        account = bank.find_account(self.account_number)
+        if account is None:
+            print("Transaction failed")
+        if self.transaction_type == "deposit":
+            account.deposit(self.amount)
+            print("amount deposited")
+        elif self.transaction_type == "withdraw":
+            account.withdraw(self.amount)
+            print("amount withdrawn")
+            
+        else:
+            print("invalidTransaction")
+       
+            
+acc1 = Account(101, "Alice", 1000)
+acc2 = Account(102, "Bob", 500)
+
+bank = Bank("CityBank")
+bank.create_account(acc1)
+bank.create_account(acc2)
+t1 = Transaction(101, "deposit", 300)
+t2 = Transaction(102, "withdraw", 200)
+t1.process(bank)
+t2.process(bank)
+bank.display_accounts()
+print(bank.total_balance())
+ 
